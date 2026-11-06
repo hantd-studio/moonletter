@@ -1,0 +1,70 @@
+:root {
+  --bg: #F6F0E7;
+  --surface: #FFFCF8;
+  --ink: #2A2420;
+  --ink-2: #5E544C;
+  --ink-3: #72675E;
+  --accent: #AD5236;
+  --accent-soft: #F6E4D9;
+  --line: #E2D7C8;
+  --mark: #FFE7A3;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1A1714;
+    --surface: #26211D;
+    --ink: #F2EBE2;
+    --ink-2: #C4B8AB;
+    --ink-3: #9A8E82;
+    --accent: #E89C7A;
+    --accent-soft: #3A2A22;
+    --line: #3A332D;
+    --mark: #5A4A1E;
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 16px/1.65 "Be Vietnam Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+main { max-width: 720px; margin: 0 auto; padding: 32px 20px 64px; }
+header { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 32px; }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--ink); text-decoration: none; }
+.brand img { width: 36px; height: 36px; border-radius: 9px; }
+.lang { display: flex; gap: 4px; background: var(--surface); padding: 4px; border-radius: 999px; }
+.lang a { padding: 6px 12px; border-radius: 999px; color: var(--ink-2); text-decoration: none; font-size: 14px; font-weight: 600; }
+.lang a.on { background: var(--accent-soft); color: var(--accent); }
+h1 { font-size: 32px; line-height: 1.2; margin: 0 0 8px; letter-spacing: -0.4px; }
+.meta { color: var(--ink-3); font-size: 14px; margin: 0 0 24px; }
+h2 { font-size: 20px; line-height: 1.3; margin: 40px 0 8px; }
+h3 { font-size: 16px; margin: 24px 0 4px; }
+p, li { color: var(--ink-2); }
+strong { color: var(--ink); }
+a { color: var(--accent); }
+ul { padding-left: 20px; }
+li { margin: 4px 0; }
+.short {
+  background: var(--surface);
+  border-radius: 16px;
+  padding: 16px 20px;
+  margin: 8px 0 16px;
+}
+.short p { margin: 0; }
+.short b { color: var(--accent); font-size: 12px; letter-spacing: 1px; text-transform: uppercase; display: block; margin-bottom: 4px; }
+.summary { background: var(--accent-soft); border-radius: 16px; padding: 20px; margin: 0 0 8px; }
+.summary ul { margin: 8px 0 0; }
+.summary li { color: var(--ink); }
+.todo { background: var(--mark); color: var(--ink); padding: 0 4px; border-radius: 4px; }
+footer { margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--ink-3); font-size: 14px; }
+
+/* Song ngữ: mặc định tiếng Anh; mở với #vi thì hiện tiếng Việt. */
+#vi { display: none; }
+#vi:target { display: block; }
+body:has(#vi:target) #en { display: none; }
+body:has(#vi:target) .lang a[href="#en"] { background: none; color: var(--ink-2); }
+body:has(#vi:target) .lang a[href="#vi"] { background: var(--accent-soft); color: var(--accent); }
+/* Mở bằng #vi / #en: không cuộn mất phần đầu trang (trình duyệt kẹp về 0). */
+article { scroll-margin-top: 100vh; }
