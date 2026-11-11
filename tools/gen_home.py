@@ -107,7 +107,9 @@ def article(lang):
         return (f'<div class="phone"><img src="img/raw-{lang}-{n}.jpg" width="598" height="1300" '
                 f'alt="{html.escape(alt)}"{LAZY if lazy else ""}></div>')
 
-    badge = f'<a class="badge" href="{t["store"]}"><small>{t["badge"][0]}</small><span>{t["badge"][1]}</span></a>'
+    # Badge chính thức của Apple (Apple Marketing Tools, bản đen), đúng ngôn ngữ.
+    badge = (f'<a class="badge" href="{t["store"]}"><img src="img/badge-{lang}.svg" width="160" height="53" '
+             f'alt="{t["badge"][0]} {t["badge"][1]}"></a>')
     o = [f'<article id="{lang}" lang="{lang}">',
          '<nav class="nav"><div class="wrap">',
          '<a class="brand" href="./"><img src="logo.png" alt="">Moonletter</a>',

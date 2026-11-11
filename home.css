@@ -56,13 +56,9 @@ img { display: block; max-width: 100%; }
   font-weight: 700; margin: 0 auto 20px; max-width: 880px;
 }
 .hero .sub { font-size: clamp(18px, 2vw, 22px); color: var(--ink-2); margin: 0 auto 36px; max-width: 620px; }
-.badge {
-  display: inline-flex; flex-direction: column; align-items: flex-start; justify-content: center;
-  background: #000; color: #fff; text-decoration: none;
-  border-radius: 11px; padding: 8px 20px 9px; min-width: 168px; line-height: 1.1;
-}
-.badge small { font-size: 11px; letter-spacing: 0.2px; }
-.badge span { font-size: 21px; font-weight: 600; letter-spacing: -0.3px; }
+/* Badge chính thức của Apple: không đổi màu / tỷ lệ, chừa khoảng trống quanh badge. */
+.badge { display: inline-block; line-height: 0; }
+.badge img { width: 160px; height: auto; }
 .badge:hover { opacity: 0.85; }
 .free { color: var(--ink-3); font-size: 14px; margin: 16px 0 0; }
 .trust { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px 28px; margin: 28px 0 0; padding: 0; list-style: none; color: var(--ink-3); font-size: 14px; }
