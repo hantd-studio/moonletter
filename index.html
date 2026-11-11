@@ -8,7 +8,8 @@
 <link rel="canonical" href="https://hantd-studio.github.io/moonletter/">
 <link rel="icon" href="logo.png">
 <link rel="apple-touch-icon" href="logo.png">
-<link rel="stylesheet" href="style.css">
+<link rel="preload" href="fonts/BeVietnamPro-Bold.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="home.css">
 <!-- iPhone Safari: thanh "Tải" của App Store ở đầu trang. -->
 <meta name="apple-itunes-app" content="app-id=6832021926">
 <meta property="og:type" content="website">
@@ -35,116 +36,96 @@
 }
 </script>
 <script>
-  // Máy để tiếng Việt và mở trang không kèm #en / #vi: hiện bản tiếng Việt.
-  if (!location.hash && (navigator.language || "").toLowerCase().startsWith("vi")) location.replace("#vi");
+  // Song ngữ: #vi / #en chọn ngôn ngữ (link trong app mở /#vi); không có thì theo ngôn ngữ trình duyệt.
+  // Link nội trang (#features…) không đổi ngôn ngữ.
+  (function () {
+    var root = document.documentElement;
+    function apply() {
+      if (location.hash === "#vi") root.classList.add("vi");
+      else if (location.hash === "#en") root.classList.remove("vi");
+      root.lang = root.classList.contains("vi") ? "vi" : "en";
+    }
+    if (!location.hash && (navigator.language || "").toLowerCase().indexOf("vi") === 0) root.classList.add("vi");
+    apply();
+    addEventListener("hashchange", apply);
+  })();
 </script>
 </head>
 <body>
-<main class="wide">
-<header>
-  <a class="brand" href="./"><img src="logo.png" alt="">Moonletter</a>
-  <nav class="lang" aria-label="Language"><a href="#en" class="on">English</a><a href="#vi">Tiếng Việt</a></nav>
-</header>
-
-<!-- ============================== ENGLISH ============================== -->
 <article id="en" lang="en">
-<section class="hero">
-  <p class="eyebrow">For the days after a breakup</p>
-  <h1>Some words are better written than sent.</h1>
-  <p class="lead">Moonletter is a quiet place to write what you can't say, get through the urge to text your ex, and count the days you choose yourself.</p>
-  <p><a class="store" href="https://apps.apple.com/app/id6832021926">Download on the App Store</a></p>
-  <p class="fine">Free · iPhone · No account · No ads</p>
-</section>
-
-<div class="shots" aria-label="Screenshots">
-  <img src="img/en-04.jpg" width="506" height="1100" alt="Type the text. Never send it." loading="lazy">
-  <img src="img/en-05.jpg" width="506" height="1100" alt="Count every day you choose yourself. A slip is noted, never a reset to zero." loading="lazy">
-  <img src="img/en-06.jpg" width="506" height="1100" alt="When the urge hits, breathe. One tap SOS, always free." loading="lazy">
-  <img src="img/en-03.jpg" width="506" height="1100" alt="Share one line as an image. Their name stays hidden." loading="lazy">
-  <img src="img/en-07.jpg" width="506" height="1100" alt="Seal a letter for 30 days and read it again when you're stronger." loading="lazy">
-</div>
-
-<h2>What's inside</h2>
-<div class="features">
-  <div class="card"><h3>Unsent letters</h3><p>Write to them, to yourself, or to who you used to be. Gentle prompts when you don't know where to start. Seal a letter, lock it for 30 days, and read it again when you're stronger.</p></div>
-  <div class="card"><h3>Text them, without sending</h3><p>Type the message you want to send. It stays here. Nothing ever leaves the app.</p></div>
-  <div class="card"><h3>No contact, without the guilt</h3><p>Count the days since you last talked. A slip is noted, never a reset to zero. Milestones at 3, 7, 14, 30, 60 and 90 days.</p></div>
-  <div class="card"><h3>SOS when the urge hits</h3><p>One tap: breathe slowly for a minute, read the reasons you wrote yourself, then write instead of texting. Always free.</p></div>
-  <div class="card"><h3>Share a line, beautifully</h3><p>Turn a few sentences of a sealed letter into an image to share. Their name is always hidden.</p></div>
-  <div class="card"><h3>Private by design</h3><p>No account, no sign-in. Your letters stay on your iPhone and are never uploaded. Lock the app with Face ID. No ads, and we never sell data.</p></div>
-</div>
-
-<h2>Free and Pro</h2>
-<div class="plans">
-  <div class="card"><h3>Free, forever</h3><p>The no-contact counter, milestones and SOS, plus 1 letter, 3 unsent texts and 3 writing prompts.</p></div>
-  <div class="card"><h3>Pro</h3><p>Unlimited letters and unsent texts, all 20 prompts and the 30-day lock. Pay once for Lifetime, or choose monthly or weekly.</p></div>
-</div>
-
-<p class="note">Moonletter is not therapy and does not promise to bring anyone back. It's a place to feel it, write it, and keep going. If you are in danger or thinking about harming yourself, call your local emergency number right away.</p>
-
-<p class="cta"><a class="store" href="https://apps.apple.com/app/id6832021926">Download on the App Store</a></p>
-
-<h2 id="support">Support</h2>
-<p>Questions, problems or feedback: <a href="mailto:support.moonletter@gmail.com">support.moonletter@gmail.com</a>. We usually reply within a few days.</p>
-<ul>
-  <li><strong>Restore Pro on a new phone:</strong> open the upgrade screen and tap Restore purchases.</li>
-  <li><strong>Cancel a subscription:</strong> iOS Settings › [your name] › Subscriptions.</li>
-  <li><strong>Delete your data:</strong> in the app, Settings › Delete all data.</li>
-</ul>
-<h2>Legal</h2>
-<p><a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms of Use</a></p>
+<nav class="nav"><div class="wrap">
+<a class="brand" href="./"><img src="logo.png" alt="">Moonletter</a>
+<div class="links"><a href="#features">Features</a><a href="#privacy">Privacy</a><a href="#pricing">Pricing</a><a href="#support">Support</a></div>
+<div class="lang"><a href="#en">EN</a><a href="#vi">VI</a></div>
+<a class="get" href="https://apps.apple.com/app/id6832021926">Get the app</a>
+</div></nav>
+<header class="hero"><div class="wrap">
+<h1>Some words are better written than sent.</h1>
+<p class="sub">Unsent letters, a no-contact counter and an SOS for the urge to text. For the days after a breakup.</p>
+<a class="badge" href="https://apps.apple.com/app/id6832021926"><small>Download on the</small><span>App Store</span></a>
+<p class="free">Free to use. Better with Pro.</p>
+<ul class="trust"><li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c1.2-3.5 4-5 7-5s5.8 1.5 7 5"/><path d="M4 4l16 16"/></svg>No account</li><li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M6 6l12 12"/></svg>No ads</li><li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M10.5 18.5h3"/></svg>Nothing leaves your iPhone</li></ul>
+<div class="stage"><div class="phone"><img src="img/raw-en-4.jpg" width="598" height="1300" alt="No-contact day counter"></div><div class="phone"><img src="img/raw-en-1.jpg" width="598" height="1300" alt="Writing an unsent letter"></div><div class="phone"><img src="img/raw-en-5.jpg" width="598" height="1300" alt="SOS: breathe for one minute"></div></div>
+</div></header>
+<section class="features" id="features"><div class="wrap">
+<div class="row"><div class="copy"><p class="kicker">Unsent letters</p><h2>Write the letter you'll never send.</h2><p>Say it all, to them, to yourself, or to who you used to be. Gentle prompts help when you don't know where to start.</p><p>Seal it when you're done. Lock it for 30 days and read it again when you're stronger.</p></div><div class="phone"><img src="img/raw-en-1.jpg" width="598" height="1300" alt="Write the letter you&#x27;ll never send." loading="lazy"></div></div>
+<div class="row"><div class="copy"><p class="kicker">Text without sending</p><h2>Type the text. Then keep it.</h2><p>It's 2 a.m. and you want to message them. Type it here instead, like a real chat. It never leaves the app.</p></div><div class="phone"><img src="img/raw-en-3.jpg" width="598" height="1300" alt="Type the text. Then keep it." loading="lazy"></div></div>
+<div class="row"><div class="copy"><p class="kicker">No contact</p><h2>A slip is noted, never a reset to zero.</h2><p>Count the days since you last talked, with milestones at 3, 7, 14, 30, 60 and 90 days. One hard night doesn't erase the progress you've made.</p></div><div class="phone"><img src="img/raw-en-4.jpg" width="598" height="1300" alt="A slip is noted, never a reset to zero." loading="lazy"></div></div>
+<div class="row"><div class="copy"><p class="kicker">SOS</p><h2>When the urge hits, breathe first.</h2><p>One tap: a minute of slow breathing, then the reasons you wrote yourself. Then write instead of texting. SOS is always free.</p></div><div class="phone"><img src="img/raw-en-5.jpg" width="598" height="1300" alt="When the urge hits, breathe first." loading="lazy"></div></div>
+<div class="row"><div class="copy"><p class="kicker">Share</p><h2>Keep a line. Share it if you want.</h2><p>Turn a few sentences of a sealed letter into an image. Their name is always hidden.</p></div><div class="phone"><img src="img/raw-en-2.jpg" width="598" height="1300" alt="Keep a line. Share it if you want." loading="lazy"></div></div>
+</div></section>
+<section class="privacy" id="privacy"><div class="wrap">
+<h2>Private by design</h2><p>Moonletter has no server to send your words to. What you write stays yours.</p>
+<ul class="points"><li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c1.2-3.5 4-5 7-5s5.8 1.5 7 5"/><path d="M4 4l16 16"/></svg><b>No account</b><span>No sign-up, no email.</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M10.5 18.5h3"/></svg><b>On your iPhone</b><span>Letters and texts are never uploaded.</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8V6a2 2 0 0 1 2-2h2M16 4h2a2 2 0 0 1 2 2v2M20 16v2a2 2 0 0 1-2 2h-2M8 20H6a2 2 0 0 1-2-2v-2"/><path d="M9 9.5v1M15 9.5v1M12 9.5v3.5h-1M9.5 15.5c1.4 1 3.6 1 5 0"/></svg><b>Face ID lock</b><span>Lock the app if you want.</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M6 6l12 12"/></svg><b>No ads</b><span>We never sell data.</span></li></ul>
+</div></section>
+<section class="pricing" id="pricing"><div class="wrap">
+<h2>Free to start</h2><div class="plans"><div><h3>Free</h3><p>The no-contact counter, milestones and SOS, forever. Plus 1 letter, 3 unsent texts and 3 prompts.</p></div><div><h3>Pro</h3><p>Unlimited letters and unsent texts, all 20 prompts and the 30-day lock. Pay once for Lifetime, or go monthly or weekly.</p></div></div>
+</div></section>
+<section class="closing"><div class="wrap">
+<h2>Write it here. Not to them.</h2><a class="badge" href="https://apps.apple.com/app/id6832021926"><small>Download on the</small><span>App Store</span></a><p class="note">Moonletter is not therapy and does not promise to bring anyone back. If you are in danger or thinking about harming yourself, call your local emergency number right away.</p>
+</div></section>
+<section class="support" id="support"><div class="wrap">
+<h2>Support</h2><p>Questions, problems or feedback: <a href="mailto:support.moonletter@gmail.com">support.moonletter@gmail.com</a>. We usually reply within a few days.</p><ul><li><strong>Restore Pro on a new phone:</strong> open the upgrade screen and tap Restore purchases.</li><li><strong>Cancel a subscription:</strong> iOS Settings › [your name] › Subscriptions.</li><li><strong>Delete your data:</strong> in the app, Settings › Delete all data.</li></ul>
+</div></section>
+<footer><div class="wrap"><span>© 2026 Moonletter</span><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Use</a><a href="mailto:support.moonletter@gmail.com">support.moonletter@gmail.com</a></div></footer>
 </article>
 
-<!-- ============================== TIẾNG VIỆT ============================== -->
 <article id="vi" lang="vi">
-<section class="hero">
-  <p class="eyebrow">Cho những ngày sau chia tay</p>
-  <h1>Có những lời viết ra thì nhẹ hơn là gửi đi.</h1>
-  <p class="lead">Moonletter là một góc yên tĩnh để viết những điều không nói được, vượt qua cơn muốn nhắn tin cho người cũ, và đếm những ngày bạn chọn chính mình.</p>
-  <p><a class="store" href="https://apps.apple.com/vn/app/id6832021926">Tải trên App Store</a></p>
-  <p class="fine">Miễn phí · iPhone · Không cần tài khoản · Không quảng cáo</p>
-</section>
-
-<div class="shots" aria-label="Ảnh màn hình">
-  <img src="img/vi-04.jpg" width="506" height="1100" alt="Gõ tin nhắn. Đừng gửi đi." loading="lazy">
-  <img src="img/vi-05.jpg" width="506" height="1100" alt="Đếm từng ngày bạn chọn chính mình. Lỡ liên lạc thì ghi nhận, không đếm lại từ 0." loading="lazy">
-  <img src="img/vi-06.jpg" width="506" height="1100" alt="Khi muốn nhắn, hãy thở. SOS một chạm, luôn miễn phí." loading="lazy">
-  <img src="img/vi-03.jpg" width="506" height="1100" alt="Biến một câu thư thành ảnh để chia sẻ. Tên người ấy luôn được ẩn." loading="lazy">
-  <img src="img/vi-07.jpg" width="506" height="1100" alt="Niêm phong thư 30 ngày rồi đọc lại khi bạn đã vững hơn." loading="lazy">
-</div>
-
-<h2>Có gì bên trong</h2>
-<div class="features">
-  <div class="card"><h3>Thư không gửi</h3><p>Viết cho người ấy, cho chính mình, hay cho con người cũ của bạn. Có gợi ý nhẹ nhàng khi chưa biết bắt đầu từ đâu. Niêm phong, khoá thư 30 ngày, rồi đọc lại khi bạn đã vững hơn.</p></div>
-  <div class="card"><h3>Nhắn mà không gửi</h3><p>Gõ tin nhắn bạn đang muốn gửi. Nó ở lại đây. Không gì rời khỏi ứng dụng.</p></div>
-  <div class="card"><h3>Không liên lạc, không tự trách</h3><p>Đếm số ngày từ lần cuối hai người nói chuyện. Lỡ liên lạc thì ghi nhận, không bao giờ đếm lại từ 0. Có mốc 3, 7, 14, 30, 60 và 90 ngày.</p></div>
-  <div class="card"><h3>SOS khi muốn nhắn</h3><p>Một chạm: thở chậm một phút, đọc lại những lý do chính bạn đã viết, rồi viết thay vì nhắn. Luôn miễn phí.</p></div>
-  <div class="card"><h3>Chia sẻ một câu thật đẹp</h3><p>Biến vài câu trong lá thư đã niêm phong thành ảnh để chia sẻ. Tên người ấy luôn được ẩn.</p></div>
-  <div class="card"><h3>Riêng tư ngay từ đầu</h3><p>Không tài khoản, không đăng nhập. Thư chỉ nằm trên iPhone của bạn, không tải lên đâu cả. Khoá ứng dụng bằng Face ID. Không quảng cáo, không bao giờ bán dữ liệu.</p></div>
-</div>
-
-<h2>Miễn phí và Pro</h2>
-<div class="plans">
-  <div class="card"><h3>Miễn phí mãi mãi</h3><p>Đếm ngày không liên lạc, các mốc và SOS, kèm 1 lá thư, 3 lần nhắn mà không gửi và 3 gợi ý viết.</p></div>
-  <div class="card"><h3>Pro</h3><p>Thư và nhắn mà không gửi không giới hạn, đủ 20 gợi ý và khoá thư 30 ngày. Trả một lần cho gói Trọn đời, hoặc chọn gói tháng hay gói tuần.</p></div>
-</div>
-
-<p class="note">Moonletter không phải liệu pháp tâm lý và không hứa giúp bạn quay lại với ai. Đây là nơi để cảm nhận, viết ra và bước tiếp. Nếu bạn gặp nguy hiểm hoặc có ý định tự làm hại mình, hãy gọi ngay số khẩn cấp tại nơi bạn ở.</p>
-
-<p class="cta"><a class="store" href="https://apps.apple.com/vn/app/id6832021926">Tải trên App Store</a></p>
-
-<h2>Hỗ trợ</h2>
-<p>Câu hỏi, lỗi hoặc góp ý: <a href="mailto:support.moonletter@gmail.com">support.moonletter@gmail.com</a>. Chúng tôi thường trả lời trong vài ngày.</p>
-<ul>
-  <li><strong>Mở lại Pro trên máy mới:</strong> mở màn nâng cấp và bấm Khôi phục giao dịch.</li>
-  <li><strong>Huỷ gói đăng ký:</strong> Cài đặt iOS › [tên bạn] › Đăng ký.</li>
-  <li><strong>Xoá dữ liệu:</strong> trong ứng dụng, Cài đặt › Xoá toàn bộ dữ liệu.</li>
-</ul>
-<h2>Pháp lý</h2>
-<p><a href="privacy.html#vi">Chính sách quyền riêng tư</a> · <a href="terms.html#vi">Điều khoản sử dụng</a></p>
+<nav class="nav"><div class="wrap">
+<a class="brand" href="./"><img src="logo.png" alt="">Moonletter</a>
+<div class="links"><a href="#vi-features">Tính năng</a><a href="#vi-privacy">Riêng tư</a><a href="#vi-pricing">Giá</a><a href="#vi-support">Hỗ trợ</a></div>
+<div class="lang"><a href="#en">EN</a><a href="#vi">VI</a></div>
+<a class="get" href="https://apps.apple.com/vn/app/id6832021926">Tải app</a>
+</div></nav>
+<header class="hero"><div class="wrap">
+<h1>Có những lời viết ra thì nhẹ hơn là gửi đi.</h1>
+<p class="sub">Thư không gửi, đếm ngày không liên lạc và SOS khi muốn nhắn tin. Cho những ngày sau chia tay.</p>
+<a class="badge" href="https://apps.apple.com/vn/app/id6832021926"><small>Tải về trên</small><span>App Store</span></a>
+<p class="free">Dùng miễn phí. Đầy đủ hơn với Pro.</p>
+<ul class="trust"><li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c1.2-3.5 4-5 7-5s5.8 1.5 7 5"/><path d="M4 4l16 16"/></svg>Không cần tài khoản</li><li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M6 6l12 12"/></svg>Không quảng cáo</li><li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M10.5 18.5h3"/></svg>Không gì rời khỏi iPhone</li></ul>
+<div class="stage"><div class="phone"><img src="img/raw-vi-4.jpg" width="598" height="1300" alt="Đếm ngày không liên lạc"></div><div class="phone"><img src="img/raw-vi-1.jpg" width="598" height="1300" alt="Viết thư không gửi"></div><div class="phone"><img src="img/raw-vi-5.jpg" width="598" height="1300" alt="SOS: thở chậm một phút"></div></div>
+</div></header>
+<section class="features" id="vi-features"><div class="wrap">
+<div class="row"><div class="copy"><p class="kicker">Thư không gửi</p><h2>Viết lá thư bạn sẽ không bao giờ gửi.</h2><p>Nói hết, với người ấy, với chính mình, hay với con người cũ của bạn. Có gợi ý nhẹ nhàng khi chưa biết bắt đầu từ đâu.</p><p>Niêm phong khi viết xong. Khoá thư 30 ngày rồi đọc lại khi bạn đã vững hơn.</p></div><div class="phone"><img src="img/raw-vi-1.jpg" width="598" height="1300" alt="Viết lá thư bạn sẽ không bao giờ gửi." loading="lazy"></div></div>
+<div class="row"><div class="copy"><p class="kicker">Nhắn mà không gửi</p><h2>Gõ tin nhắn. Rồi giữ nó lại.</h2><p>Hai giờ sáng, bạn muốn nhắn cho người ấy. Hãy gõ ở đây, như một cuộc trò chuyện thật. Không gì rời khỏi ứng dụng.</p></div><div class="phone"><img src="img/raw-vi-3.jpg" width="598" height="1300" alt="Gõ tin nhắn. Rồi giữ nó lại." loading="lazy"></div></div>
+<div class="row"><div class="copy"><p class="kicker">Không liên lạc</p><h2>Lỡ một lần, không bao giờ về số 0.</h2><p>Đếm số ngày từ lần cuối hai người nói chuyện, có mốc 3, 7, 14, 30, 60 và 90 ngày. Một đêm khó khăn không xoá đi những gì bạn đã cố gắng.</p></div><div class="phone"><img src="img/raw-vi-4.jpg" width="598" height="1300" alt="Lỡ một lần, không bao giờ về số 0." loading="lazy"></div></div>
+<div class="row"><div class="copy"><p class="kicker">SOS</p><h2>Khi muốn nhắn, hãy thở trước.</h2><p>Một chạm: một phút thở chậm, rồi đọc lại những lý do chính bạn đã viết. Sau đó viết thay vì nhắn. SOS luôn miễn phí.</p></div><div class="phone"><img src="img/raw-vi-5.jpg" width="598" height="1300" alt="Khi muốn nhắn, hãy thở trước." loading="lazy"></div></div>
+<div class="row"><div class="copy"><p class="kicker">Chia sẻ</p><h2>Giữ một câu. Chia sẻ nếu bạn muốn.</h2><p>Biến vài câu trong lá thư đã niêm phong thành ảnh. Tên người ấy luôn được ẩn.</p></div><div class="phone"><img src="img/raw-vi-2.jpg" width="598" height="1300" alt="Giữ một câu. Chia sẻ nếu bạn muốn." loading="lazy"></div></div>
+</div></section>
+<section class="privacy" id="vi-privacy"><div class="wrap">
+<h2>Riêng tư ngay từ đầu</h2><p>Moonletter không có máy chủ nào để gửi lời của bạn tới. Những gì bạn viết là của bạn.</p>
+<ul class="points"><li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c1.2-3.5 4-5 7-5s5.8 1.5 7 5"/><path d="M4 4l16 16"/></svg><b>Không tài khoản</b><span>Không đăng ký, không cần email.</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M10.5 18.5h3"/></svg><b>Trên iPhone của bạn</b><span>Thư và tin nhắn không bao giờ được tải lên.</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8V6a2 2 0 0 1 2-2h2M16 4h2a2 2 0 0 1 2 2v2M20 16v2a2 2 0 0 1-2 2h-2M8 20H6a2 2 0 0 1-2-2v-2"/><path d="M9 9.5v1M15 9.5v1M12 9.5v3.5h-1M9.5 15.5c1.4 1 3.6 1 5 0"/></svg><b>Khoá bằng Face ID</b><span>Khoá ứng dụng nếu bạn muốn.</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M6 6l12 12"/></svg><b>Không quảng cáo</b><span>Không bao giờ bán dữ liệu.</span></li></ul>
+</div></section>
+<section class="pricing" id="vi-pricing"><div class="wrap">
+<h2>Bắt đầu miễn phí</h2><div class="plans"><div><h3>Miễn phí</h3><p>Đếm ngày không liên lạc, các mốc và SOS, mãi mãi. Kèm 1 lá thư, 3 lần nhắn mà không gửi và 3 gợi ý.</p></div><div><h3>Pro</h3><p>Thư và nhắn mà không gửi không giới hạn, đủ 20 gợi ý và khoá thư 30 ngày. Trả một lần cho gói Trọn đời, hoặc chọn gói tháng hay gói tuần.</p></div></div>
+</div></section>
+<section class="closing"><div class="wrap">
+<h2>Viết ở đây. Đừng gửi cho người ấy.</h2><a class="badge" href="https://apps.apple.com/vn/app/id6832021926"><small>Tải về trên</small><span>App Store</span></a><p class="note">Moonletter không phải liệu pháp tâm lý và không hứa giúp bạn quay lại với ai. Nếu bạn gặp nguy hiểm hoặc có ý định tự làm hại mình, hãy gọi ngay số khẩn cấp tại nơi bạn ở.</p>
+</div></section>
+<section class="support" id="vi-support"><div class="wrap">
+<h2>Hỗ trợ</h2><p>Câu hỏi, lỗi hoặc góp ý: <a href="mailto:support.moonletter@gmail.com">support.moonletter@gmail.com</a>. Chúng tôi thường trả lời trong vài ngày.</p><ul><li><strong>Mở lại Pro trên máy mới:</strong> mở màn nâng cấp và bấm Khôi phục giao dịch.</li><li><strong>Huỷ gói đăng ký:</strong> Cài đặt iOS › [tên bạn] › Đăng ký.</li><li><strong>Xoá dữ liệu:</strong> trong ứng dụng, Cài đặt › Xoá toàn bộ dữ liệu.</li></ul>
+</div></section>
+<footer><div class="wrap"><span>© 2026 Moonletter</span><a href="privacy.html#vi">Chính sách quyền riêng tư</a><a href="terms.html#vi">Điều khoản sử dụng</a><a href="mailto:support.moonletter@gmail.com">support.moonletter@gmail.com</a></div></footer>
 </article>
-
-<footer>© 2026 Moonletter · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></footer>
-</main>
 </body>
 </html>
