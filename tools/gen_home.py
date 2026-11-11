@@ -160,6 +160,7 @@ HEAD = '''<!doctype html>
 <title>Moonletter: Unsent Letters After a Breakup</title>
 <meta name="description" content="A quiet iPhone app for the days after a breakup: write unsent letters, type the text you'll never send, count your no-contact days and get through the urge with SOS. Free, no account, nothing leaves your phone.">
 <link rel="canonical" href="https://hantd-studio.github.io/moonletter/">
+<link rel="sitemap" type="application/xml" href="sitemap.xml">
 <link rel="icon" href="logo.png">
 <link rel="apple-touch-icon" href="logo.png">
 <link rel="preload" href="fonts/BeVietnamPro-Bold.ttf" as="font" type="font/ttf" crossorigin>
